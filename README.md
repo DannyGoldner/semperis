@@ -16,7 +16,9 @@ Semperis Movies App
 - **Step 4: Open your browser at:**  
   http://localhost:5173
 
-  ### // TO DO:
-  - 123
-- 456
+### // TO DO:
+
+- 1. Add UnitTesting
+- 2. Caching search results for future use  
+- 3. Collect and save errors
 
