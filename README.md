@@ -18,7 +18,7 @@ Semperis Movies App
 
 ### // TO DO:
 
-- 1. Add UnitTesting
-- 2. Caching search results for future use  
-- 3. Collect and save errors
+- Add UnitTesting
+- Caching search results for future use  
+- Collect and save errors
 
