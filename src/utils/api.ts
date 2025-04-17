@@ -1,4 +1,4 @@
-const API_KEY = import.meta.env.VITE_OMDB_API_KEY;
+const API_KEY = 'b4574629'; //import.meta.env.VITE_OMDB_API_KEY;
 const baseUrl = 'http://www.omdbapi.com/';
 
 export async function fetchJson(url: string): Promise<any> {

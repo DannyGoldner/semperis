@@ -37,7 +37,6 @@
         />
       </ul>
 
-      {{ filterCriteria?.value }}
       <div
         class="show-more-wrapper"
         v-if="
@@ -118,7 +117,7 @@ const handleMovieDetailsClosed = () => {
   openMovieDetails.value = false;
 };
 
-const showMore = (commit) => {
+const showMore = () => {
   const currentMovies = store.getters.getMovies;
   const all = store.getters.getAllMovies;
 

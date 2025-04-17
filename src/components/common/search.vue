@@ -20,7 +20,6 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import labels from '../../constants/labels';
 
 const props = withDefaults(
   defineProps<{
@@ -70,6 +69,11 @@ const search = () => {
     background: #ffeeee;
     padding: 0.5rem;
     margin: 0.8rem 1rem;
+
+    @media (max-width: 787px) {
+      font-size: 12px;
+      margin: 0;
+    }
   }
 }
 </style>

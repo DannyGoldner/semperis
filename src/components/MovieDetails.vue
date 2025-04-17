@@ -129,6 +129,7 @@ li {
     display: flex;
     flex-direction: column;
     margin-right: 1rem;
+    align-self: flex-start;
 
     @media (max-width: 1024px) {
       flex: 1;
@@ -141,6 +142,10 @@ li {
 
     p {
       margin: 0 0 0.3rem;
+
+      @media (max-width: 787px) {
+        font-size: 14px;
+      }
     }
   }
 
@@ -154,6 +159,10 @@ li {
 .modal-header {
   strong {
     font-size: 1.8rem;
+
+    @media (max-width: 787px) {
+      font-size: 20px;
+    }
   }
 }
 

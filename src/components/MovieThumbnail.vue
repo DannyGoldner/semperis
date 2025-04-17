@@ -7,8 +7,7 @@
 </template>
 
 <script lang="ts" setup>
-//import { defineProps, defineEmits } from 'vue';
-import { Movie } from '@/types/movies';
+import type { Movie } from '../types/movies';
 
 const props = defineProps<{
   movie: Movie;

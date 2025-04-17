@@ -17,7 +17,7 @@ import { ref } from 'vue';
 import semperisLogo from './assets/images/semperis-logo.png';
 import labels from './constants/labels';
 
-const linkURL = ref('https://www.semperis.com/'); // replace with your desired link URL
+const linkURL = ref('https://www.semperis.com/');
 </script>
 
 <style>
@@ -25,6 +25,12 @@ main,
 h1,
 h6 {
   margin: 0 auto;
+}
+
+h1 {
+  @media (max-width: 787px) {
+    font-size: 24px;
+  }
 }
 
 h2 {

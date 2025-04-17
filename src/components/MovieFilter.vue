@@ -86,7 +86,7 @@ const getUniqueYears = (movies: Movie[]): string[] => {
   width: 29%;
 
   @media (max-width: 1024px) {
-    width: 58%;
+    width: 70%;
   }
 
   select {
