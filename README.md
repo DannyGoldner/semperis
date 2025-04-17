@@ -12,9 +12,7 @@ Danny Goldner Task Solution
 
 - **Step 3: Build and Run the Project:**  
   Run `npm run dev` to build the project.
-
-- **Step 4: Open your browser at:**  
-  http://localhost:5173
+  
 
 ### // TO DO:
 
