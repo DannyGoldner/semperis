@@ -6,24 +6,27 @@
       :error-message="searchErrorMessage"
     />
 
-    <span v-if="loading" aria-busy="true">{{ labels.catalog.loading }}</span>
+    <span v-if="loading" aria-busy="true">{{ LABELS.CATALOG.LOADING }}</span>
     <div v-else>
       <div
         v-if="store.getters.getMoviesNotFound"
         class="empty-search-result"
       ></div>
 
-      <MovieFilter v-if="movies.length" @filter="handleMovieFilter" />
+      <MovieFilter
+        v-if="movies.length"
+        @[EVENT_NAMES.MOVIES.FILTER]="handleMoviesFilter"
+      />
 
       <div v-if="!movies.length && searchString.length > 2">
-        {{ labels.catalog.noResults }}
+        {{ LABELS.CATALOG.NO_RESULTS }}
       </div>
       <div v-if="movies.length" class="search-res">
         <div>
-          {{ labels.catalog.Results }} <strong>{{ searchString }}</strong>
+          {{ LABELS.CATALOG.RESULTS }} <strong>{{ searchString }}</strong>
         </div>
         <div>
-          {{ labels.catalog.showing }} {{ movies.length }} /
+          {{ LABELS.CATALOG.SHOWING }} {{ movies.length }} /
           {{ store.getters.getAllMovies.length }}
         </div>
       </div>
@@ -33,7 +36,7 @@
           v-for="movie in filteredMovies"
           :key="movie.imdbID"
           :movie="movie"
-          @select="handleMovieSelected"
+          @[EVENT_NAMES.MOVIE_THUMBNAIL.SELECT]="handleMovieSelected"
         />
       </ul>
 
@@ -46,13 +49,13 @@
             filterCriteria.releaseYear === '')
         "
       >
-        <button @click="showMore">{{ labels.buttons.showMore }}</button>
+        <button @click="showMore">{{ LABELS.BUTTONS.SHOW_MORE }}</button>
       </div>
 
       <MovieDetails
         :open="openMovieDetails"
         :id="movieId"
-        @close="handleMovieDetailsClosed"
+        @[EVENT_NAMES.MOVIE_DETAILS.CLOSE]="handleMovieDetailsClosed"
       ></MovieDetails>
     </div>
   </div>
@@ -66,14 +69,15 @@ import MovieFilter from './MovieFilter.vue';
 import MovieThumbnail from './MovieThumbnail.vue';
 import MovieDetails from './MovieDetails.vue';
 import type { Movie } from '../types/movies';
-import labels from '../constants/labels';
+import LABELS from '../constants/labels';
+import { EVENT_NAMES } from '../constants/events';
 
 const store = useStore();
 
 const loading = ref(false);
 
-const searchErrorMessage = labels.messages.searchInvalid;
-const searchPlaceHolder = labels.forms.placeholder.searchMovie;
+const searchErrorMessage = LABELS.MESSAGES.SEARCH_INVALID;
+const searchPlaceHolder = LABELS.FORMS.PLACEHOLDER.SEARCH_MOVIE;
 
 const openMovieDetails = ref<boolean>(false);
 const movieId = ref<string>('');
@@ -99,7 +103,7 @@ const handleMovieSearch = async (searchQuery: string) => {
   }
 };
 
-const handleMovieFilter = (criteria: { releaseYear: string | null }) => {
+const handleMoviesFilter = (criteria: { releaseYear: string | null }) => {
   filterCriteria.value.releaseYear = criteria.releaseYear;
   store.dispatch('fetchMoviesWithCriteria', filterCriteria.value);
 };

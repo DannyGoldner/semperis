@@ -4,7 +4,7 @@
       <template #header>
         <div class="modal-header">
           <span v-if="loading" aria-busy="true">
-            {{ labels.details.loading }}
+            {{ LABELS.DETAILS.LOADING }}
           </span>
           <strong v-else>{{ movieData?.Title || 'Movie Details' }}</strong>
         </div>
@@ -18,11 +18,8 @@
               :src="movieData.Poster"
               :alt="movieData.Title"
             />
-            <div
-              v-if="movieData?.Ratings && movieData.Ratings.length"
-              class="rating"
-            >
-              <h4>{{ labels.details.rating }}</h4>
+            <div v-if="movieData?.Ratings?.length" class="rating">
+              <h4>{{ LABELS.DETAILS.RATING }}</h4>
               <ul>
                 <li v-for="(rating, id) in movieData.Ratings" :key="id">
                   <strong>{{ rating.Source }}:</strong> {{ rating.Value }}
@@ -48,7 +45,8 @@ import { ref, watch, computed } from 'vue';
 import { useStore } from 'vuex';
 import Modal from '../components/common/modal.vue';
 import type { MovieDetails } from '../types/movies';
-import labels from '../constants/labels';
+import LABELS from '../constants/labels';
+import { EVENT_NAMES } from '../constants/events';
 
 const store = useStore();
 
@@ -58,7 +56,7 @@ const props = defineProps<{
 }>();
 
 const emit = defineEmits<{
-  (e: 'close'): void;
+  (e: typeof EVENT_NAMES.MOVIE_DETAILS.CLOSE): void;
 }>();
 
 const isModalOpen = ref(false);
@@ -111,7 +109,7 @@ const openModal = async (id: string) => {
 
 const onClose = () => {
   isModalOpen.value = false;
-  emit('close');
+  emit(EVENT_NAMES.MOVIE_DETAILS.CLOSE);
 };
 </script>
 
