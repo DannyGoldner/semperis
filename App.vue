@@ -1,6 +1,6 @@
 <template>
   <div class="main-wrapper">
-    <header>
+    <header class="main-wrapper-header">
       <div class="flex">
         <a :href="linkURL" target="_blank" rel="noopener noreferrer">
           <img width="50" height="30" :src="semperisLogo" alt="Example Image" />
@@ -26,7 +26,6 @@ const linkURL = ref('https://www.semperis.com/');
 </script>
 
 <style>
-/*main,*/
 h1,
 h6 {
   margin: 0 auto;
@@ -61,19 +60,11 @@ li {
 }
 
 .main-wrapper {
+  margin: 0 auto;
   max-width: 2000px;
-  /*margin: 2rem auto;*/
-
-  /** */
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* viewport height */
-  /* */
-
-  header {
-    margin-top: 2rem;
-    margin-left: 2rem;
-  }
+  min-height: 100vh;
 
   > div,
   main {
@@ -83,6 +74,10 @@ li {
       margin: 0.5rem;
     }
   }
+}
+
+.main-wrapper-header {
+  margin: 2rem 2rem 0;
 }
 
 main {
